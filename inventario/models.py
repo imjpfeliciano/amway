@@ -12,12 +12,13 @@ from django.contrib.auth.models import User
 	Descripcion: string [100]
 '''
 class Producto(models.Model):
-	nombre_producto = models.CharField(max_length=30, verbose_name='Nombre del Producto')
+	nombre_producto = models.CharField(max_length=30, verbose_name='Nombre del Producto', unique=True)
+	descripcion = models.TextField(verbose_name='Descripcion')
+	imagen = models.ImageField(upload_to='productos', verbose_name='Imagen')
 	min_stock = models.IntegerField(verbose_name='Cantidad Minima en Stock')
 	max_stock = models.IntegerField(verbose_name='Cantidad Maxima en Stock')
-	imagen = models.ImageField(upload_to='productos', verbose_name='Imagen')
 	precio = models.IntegerField(verbose_name='Precio del Producto')
 
 	def __unicode__(self):
 		return self.nombre_producto
-	#descripcion = models.CharField(widget=forms.TextArea max_length=120)
+	
