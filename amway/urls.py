@@ -11,4 +11,8 @@ urlpatterns = patterns('',
     url(r'^admin/', include(admin.site.urls)),
     url(r'^inicio/$','inventario.views.inicio'),
     url(r'^test/$', 'inventario.views.test'),
+    url(r'^media/(?P<path>.*)$','django.views.static.serve',
+		{'document_root':settings.MEDIA_ROOT,}
+	),
+	url(r'^productos/$', 'inventario.views.productos'),
 )

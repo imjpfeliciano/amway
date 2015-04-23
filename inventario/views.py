@@ -5,6 +5,9 @@ from django.core.mail import EmailMessage
 from django.template import RequestContext
 from django.contrib.auth.decorators import login_required
 
+from inventario.models import Producto
+from inventario.forms import ProductoForm
+
 
 
 # Create your views here.
@@ -14,3 +17,7 @@ def inicio(request):
 #@login_required(login_url='/inicio')
 def test(request):
 	return render_to_response('test.html', context_instance=RequestContext(request))
+
+def productos(request):
+	formulario = ProductoForm()
+	return render_to_response('productos.html', {'formulario': formulario}, context_instance=RequestContext(request))
