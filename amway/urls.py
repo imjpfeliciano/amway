@@ -12,7 +12,10 @@ urlpatterns = patterns('',
     url(r'^inicio/$','inventario.views.inicio'),
     url(r'^test/$', 'inventario.views.test'),
     url(r'^media/(?P<path>.*)$','django.views.static.serve',
-		{'document_root':settings.MEDIA_ROOT,}
-	),
+        {'document_root':settings.MEDIA_ROOT,}
+    ),
 	url(r'^productos/$', 'inventario.views.productos'),
+    url(r'^productos/nuevo$', 'inventario.views.nuevo_producto'),
+
+    url(r'^inventario/$', 'inventario.views.lista_productos'),
 )
