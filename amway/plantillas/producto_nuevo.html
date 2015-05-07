@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+
+{% block contenido %}
+	<div class="row">
+		<div class="card-panel teal lighten-5">
+			<form id='formulario' method='post' enctype='multipart/form-data' action=''>{% csrf_token %}
+				<div class="row">
+					<div class="input-field col s6">
+						<input id="id_nombre_producto" name="nombre_producto" type="text" class="validate"/>
+						<label for="id_nombre_producto">Nombre del Producto</label>
+					</div>
+				</div>
+				
+				<div class="row">
+					<div class="input-field col s6">
+						<textarea id="id_descripcion" name="descripcion" class="materialize-textarea validate"></textarea>
+						<label for="id_descripcion">Descripcion</label>
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="file-field input-field col s6">
+						<input class="file-path validate" type="text"/>
+						<div class="btn">
+							<span>Foto</span>
+							<input id="id_imagen" name="imagen" type="file"/>
+						</div>
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="input-field col s2">
+						<input id="id_min_stock" name="min_stock" type="text" class="validate"/>
+						<label for="id_min_stock">Stock Minimo</label>
+					</div>
+
+					<div class="input-field col s2">
+						<input id="id_max_stock" name="max_stock" type="text" class="validate"/>
+						<label for="id_max_stock">Stock Maximo</label>
+					</div>
+
+					<div class="input-field col s2">
+						<input id="id_precio" name="precio" type="text" class="validate"/>
+						<label for="id_precio">Precio</label>
+					</div>
+				</div>
+				<p><button type='submit' class="btn waves-effect waves-light" value='Registrar'>Registrar
+					<i class="mdi-content-send right"></i>
+				</button></p>
+			</form>
+		</div>
+	</div>
+{% endblock %}

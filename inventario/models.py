@@ -22,3 +22,29 @@ class Producto(models.Model):
 	def __unicode__(self):
 		return self.nombre_producto
 	
+'''
+	NombreEmpresa: string [100]
+	Fecha: date
+	Cuenta: int[100]
+	Nombre: string[100]
+	RFC: string[13]
+	SaldoInicial: int[100]
+	Cargos: int[100]
+	Abonos: int[100]
+	SaldoActual: int[100]
+'''	
+class Reporte(models.Model):
+	nombre_empresa = models.CharField(max_length=40, verbose_name='Nombre de la Empresa')
+	fecha = models.DateField(verbose_name='Fecha')
+	cuenta = models.IntegerField(verbose_name='Nro. de Cuenta')
+	nombre = models.CharField(max_length=20, verbose_name='Nombre')
+	rfc = models.CharField(max_length=20, verbose_name='RFC')
+	saldo_inicial = models.IntegerField(verbose_name='Saldo Inicial')
+	cargos = models.IntegerField(verbose_name='Cargos')
+	abonos = models.IntegerField(verbose_name='Abonos')
+	saldo_actual = models.IntegerField(verbose_name='Saldo Actual')
+
+	def __unicode__(self):
+		return self.rfc
+
+

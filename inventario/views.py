@@ -20,4 +20,19 @@ def test(request):
 
 def productos(request):
 	formulario = ProductoForm()
-	return render_to_response('productos.html', {'formulario': formulario}, context_instance=RequestContext(request))
+	return render_to_response('producto_nuevo.html', {'formulario': formulario}, context_instance=RequestContext(request))
+
+def lista_productos(request):
+	productos = Producto.objects.all()
+	return render_to_response('inventario.html', {'lista':productos}, context_instance=RequestContext(request))
+
+def nuevo_producto(request):
+	if request.method == 'POST':
+		formulario = ProductoForm(request.POST, request.FILES)
+		if formulario.is_valid():
+			#print "correcto"
+			formulario.save()
+			return HttpResponseRedirect('/inventario')
+	else:
+		formulario = ProductoForm()
+		return render_to_response('producto_nuevo.html', {'formulario':formulario}, context_instance=RequestContext(request))

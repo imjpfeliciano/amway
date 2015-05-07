@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% block contenido %}
+	{% for producto in lista %}
+		<li>
+			<img src="{{MEDIA_URL}}{{producto.imagen}}">
+		</li>
+	{% empty %}
+		<li> Aún no se han registrado productos</li>
+	{% endfor %}
+{% endblock %}
