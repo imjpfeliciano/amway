@@ -21,13 +21,14 @@ def inicio(request):
 			#usuario = Usuarios.objects.get(nombre_usuario__exact=formulario.cleaned_data['nombre_usuario'])
 			correo = request.POST['username']
 			clave = request.POST['password']
-			print correo
-			print clave
 			acceso = authenticate(username=correo, password=clave)
 			if acceso is not None:
 				if acceso.is_active:
 					login(request, acceso)
-					return HttpResponseRedirect('/valida')
+					if acceso.is_staff:
+						return HttpResponseRedirect('/inventario')
+					else:
+						return HttpResponseRedirect('/productos/nuevo')				
 				else:
 					return render_to_response('noactivo.html', context_instance=RequestContext(request))
 			else:

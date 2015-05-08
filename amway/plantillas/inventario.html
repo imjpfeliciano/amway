@@ -4,12 +4,14 @@
 <center><h3>INVENTARIO</h3></center>
 	<div class="row">
 	{% for producto in lista %}
-		<hr>
-		<div class="col s12">
+		
+		<div class="col s10 offset-s1">
+			<hr>
 			<div class="col s4">
 				<img src="{{MEDIA_URL}}{{producto.imagen}}">
 			</div>
-			<div class="col s8">
+
+			<div class="col s6">
 				<div class="row">
 					<a href="#">{{producto.nombre_producto}}</a>
 				</div>
