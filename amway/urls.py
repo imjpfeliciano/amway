@@ -8,6 +8,8 @@ urlpatterns = patterns('',
     # url(r'^blog/', include('blog.urls')),
 
     url(r'^$', 'inventario.views.inicio'), #index
+    url(r'^logout/$','inventario.views.cerrar_sesion'),
+
     url(r'^admin/', include(admin.site.urls)),
     url(r'^inicio/$','inventario.views.inicio'),
     url(r'^test/$', 'inventario.views.test'),

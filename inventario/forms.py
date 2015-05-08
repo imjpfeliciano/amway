@@ -1,6 +1,6 @@
 from django.forms import ModelForm
 from django import forms
-from inventario.models import Producto, Reporte, Usuario
+from inventario.models import Producto, Reporte, Usuario, Login
 
 class ProductoForm(ModelForm):
 	class Meta:
@@ -15,4 +15,9 @@ class ReporteForm(ModelForm):
 class UsuarioForm(ModelForm):
 	class Meta:
 		model = Usuario
+		fields = '__all__'
+
+class LoginForm(ModelForm):
+	class Meta:
+		model = Login
 		fields = '__all__'

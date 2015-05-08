@@ -59,4 +59,10 @@ class Reporte(models.Model):
 	def __unicode__(self):
 		return self.rfc
 
+class Login(models.Model):
+	username = models.CharField(max_length=40, verbose_name="Nombre de usuario")
+	password = models.CharField(max_length=40, verbose_name="Contraseña")
+
+	def __unicode__(self):
+		return self.username
 
