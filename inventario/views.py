@@ -9,6 +9,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth import login, authenticate, logout
 from inventario.models import Producto
 from inventario.forms import ProductoForm, ReporteForm, UsuarioForm, LoginForm
+from django.contrib.auth.decorators import user_passes_test
 
 
 
@@ -26,24 +27,33 @@ def inicio(request):
 				if acceso.is_active:
 					login(request, acceso)
 					if acceso.is_staff:
-						return HttpResponseRedirect('/inventario')
+						return HttpResponseRedirect('admin/')
 					else:
-						return HttpResponseRedirect('/productos/nuevo')				
+						return HttpResponseRedirect('user/')				
 				else:
 					return render_to_response('noactivo.html', context_instance=RequestContext(request))
 			else:
 				return render_to_response('nousuario.html', context_instance=RequestContext(request))
 
 	else:
-		formulario = AuthenticationForm()
-	return render_to_response('login.html', {'formulario':formulario},context_instance=RequestContext(request))
+		return render_to_response('login.html',context_instance=RequestContext(request))
+
+
+def admin_index(request):
+	return render_to_response('admin/menu.html', context_instance=RequestContext(request))
+
+def user_index(request):
+	return render_to_response('user/menu.html', context_instance=RequestContext(request))
 
 @login_required(login_url="/")
 def cerrar_sesion(request):
 	logout(request)
 	return HttpResponseRedirect("/")
 
+def validar_admin(user):
+	return user.is_staff
 
+@user_passes_test(validar_admin)
 def nuevo_usuario(request):
 	if request.method == 'POST':
 		formulario = UserCreationForm(request.POST)
@@ -67,6 +77,7 @@ def lista_productos(request):
 	productos = Producto.objects.all()
 	return render_to_response('inventario.html', {'lista':productos}, context_instance=RequestContext(request))
 
+@user_passes_test(validar_admin)
 def nuevo_producto(request):
 	if request.method == 'POST':
 		formulario = ProductoForm(request.POST, request.FILES)
