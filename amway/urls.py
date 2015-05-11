@@ -10,12 +10,12 @@ urlpatterns = patterns('',
     url(r'^$', 'inventario.views.inicio'), #index
     url(r'^logout/$','inventario.views.cerrar_sesion'),
 
-    #url(r'^admin/', include(admin.site.urls)),
+    url(r'^admins/', include(admin.site.urls)),
     url(r'^admin/$','inventario.views.admin_index'),
-    url(r'^admin/usuario/$','inventario.views.admin_index'),
+    url(r'^admin/usuario/$','inventario.views.nuevo_usuario'),
     url(r'^admin/producto/$','inventario.views.nuevo_producto'),
     url(r'^admin/inventario/$','inventario.views.lista_productos'),
-    url(r'^admin/reporte/$','inventario.views.admin_index'),
+    url(r'^admin/reporte/$','inventario.views.ver_reporte'),
 
     url(r'^user/$','inventario.views.user_index'),
     url(r'^user/inventario/$', 'inventario.views.lista_productos'),
