@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+
+{% block contenido %}
+	<div class="row">
+		<div class="col s8 offset-s2">
+		<div class="card-panel">
+			<center><h4>Registro de Usuarios</h4></center>
+			<form id='formulario' method='post' enctype='multipart/form-data' action=''>{% csrf_token %}
+				<div class="row">
+					<div class="input-field col s12">
+						<input id="id_username" name="username" type="text" class="validate"/>
+						<label for="id_username">Usuario</label>
+						<span>Obligatorio. Longitud máxima 30 caracteres alfanuméricos (letras, dígitos y @/./+/-/_) solamente.</span>
+					</div>
+				</div>
+				
+				<div class="row">
+					<div class="input-field col s6">
+						<input id="id_first_name" name="first_name" type="text" class="validate"/>
+						<label for="id_first_name">Nombre</label>
+					</div>
+
+					<div class="input-field col s6">
+						<input id="id_email" name="email" type="email" class="validate"/>
+						<label for="id_email">Email</label>
+					</div>
+				</div>
+
+
+
+				<div class="row">
+					<div class="input-field col s6">
+						<input id="id_password1" name="password1" type="password" class="validate"/>
+						<label for="id_password1">Contraseña</label>
+					</div>
+
+					<div class="input-field col s6">
+						<input id="id_password2" name="password2" type="password" class="validate"/>
+						<label for="id_password2">Confirmación de contraseña</label>
+						<span>Para verificar, introduzca la misma contraseña que introdujo a la izquierda.</span>
+					</div>
+				</div>
+
+
+				<p><button type='submit' class="btn waves-effect waves-light" value='Registrar'>Registrar
+					<i class="mdi-content-send right"></i>
+				</button></p>
+			</form>
+		</div>
+	</div>
+	</div>
+{% endblock %}

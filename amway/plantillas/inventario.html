@@ -1,11 +1,38 @@
 {% extends 'base.html' %}
 
 {% block contenido %}
-	{% for producto in lista %}
-		<li>
-			<img src="{{MEDIA_URL}}{{producto.imagen}}">
-		</li>
-	{% empty %}
-		<li> Aún no se han registrado productos</li>
-	{% endfor %}
+<div class="row">
+	<div class="col s10 offset-s1">
+		<div class="card-panel">
+			<center><h3>INVENTARIO</h3></center>
+			<div class="row">
+				{% for producto in lista %}
+					<div class="col s12">
+						<hr>
+						<div class="col s4">
+							<img src="{{MEDIA_URL}}{{producto.imagen}}">
+						</div>
+
+						<div class="col s8">
+							<div class="row">
+								<a href="#">{{producto.nombre_producto}}</a>
+							</div>
+							<div class="row">
+								<p>{{producto.descripcion}}</p>
+							</div>
+							<div class="row">
+								<h2><b>${{producto.precio}}</b></h2>
+								<div class="row">
+									<span>{{producto.in_stock}} EN STOCK</span>
+								</div>
+							</div>
+						</div>
+					</div>
+				{% empty %}
+					<li> Aún no se han registrado productos</li>
+				{% endfor %}
+			</div>
+		</div>
+	</div>
+</div>
 {% endblock %}
